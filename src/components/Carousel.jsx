@@ -1,5 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Slide from './Slide';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -8,13 +9,12 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import Slide from './Slide';
 
 import bgimg1 from '../assets/img-1.jpg'
-import bgimg2 from '../assets/img-2.jpg'
-import bgimg3 from '../assets/img-3.jpg'
-import bgimg4 from '../assets/img-4.jpg'
-import bgimg5 from '../assets/img-5.jpg'
+import bgimg2 from "../assets/img-2.jpg"
+import bgimg3 from "../assets/img-3.jpg"
+import bgimg4 from "../assets/img-4.jpg"
+import bgimg5 from "../assets/img-5.jpg"
 
 export default function Carousel() {
     return (
@@ -35,19 +35,19 @@ export default function Carousel() {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                <Slide image={bgimg1} text="Engaging  in beautifying our community" />
+                <Slide image={bgimg1} text="Your Hub for Tech innovations" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Slide image={bgimg2} text="Teaching assistance for underprivileged children" />
+                    <Slide image={bgimg2} text="Tech Tools for Tomorrow's Creators" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Slide image={bgimg3} text="Taking care of senior citizens" />
+                    <Slide image={bgimg3} text="Discover the latest in Tech" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Slide image={bgimg4} text="Assisting health care professionals" />
+                    <Slide image={bgimg4} text="Innovate, Share, Connect" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Slide image={bgimg5} text="Assisting health care professionals" />
+                    <Slide image={bgimg5} text="Share Your Tech Passion" />
                 </SwiperSlide>
             </Swiper>
         </>

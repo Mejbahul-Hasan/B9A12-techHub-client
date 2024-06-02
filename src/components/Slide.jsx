@@ -17,4 +17,5 @@ const Slide = ({image, text}) => {
     )
 }
 
-export default Slide
+
+export default Slide;

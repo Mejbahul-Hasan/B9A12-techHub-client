@@ -48,7 +48,7 @@ const Navbar = () => {
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/need-volunteer">Need Volunteer</Link>
+                            <Link to="/products">Products</Link>
                         </li>
 
                         {!user && (
@@ -77,21 +77,16 @@ const Navbar = () => {
                                 className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
                             >
                                 <li>
-                                    <Link to="/add-volunteer" className='justify-between'>Add Volunteer Post</Link>
+                                    <h1>User Name: {user?.displayName || "User name not found"}</h1>
                                 </li>
                                 <li>
-                                    <Link to="/my-volunteer-post">Manage My Post</Link>
+                                    <Link to="/my-volunteer-post">Dashboard</Link>
                                 </li>
                                 <li>
-                                    <Link to="/my-volunteer-request">My Volunteer Requested Post</Link>
+                                    <button onClick={handleSignOut} className="btn-ghost btn-sm rounded-md">Log Out</button>
                                 </li>
                             </ul>
                         </div>
-                    )}
-
-                    {user && (
-                        <button onClick={handleSignOut} className="btn-ghost btn-sm rounded-md">Log Out
-                        </button>
                     )}
 
                     <label className="cursor-pointer grid place-items-center ml-3">
