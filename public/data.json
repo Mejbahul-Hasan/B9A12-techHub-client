@@ -1,0 +1,71 @@
+[
+    {
+      "name": "TaskMaster",
+      "image": "https://i.ibb.co/pzRjRPQ/hans-peter-gauster-3y1z-F4h-IPCg-unsplash.jpg",
+      "description": "A web app that helps you manage tasks efficiently with AI-driven suggestions and analytics.",
+      "tags": ["Web Apps", "Productivity", "AI"],
+      "external_links": {
+        "website": "https://taskmaster.example.com",
+        "github": "https://github.com/example/taskmaster"
+      },
+      "upvote_count": 254
+    },
+    {
+      "name": "BrainyBot",
+      "image": "https://i.ibb.co/mcCgQxc/andrea-de-santis-zwd435-ewb4-unsplash.jpg",
+      "description": "An AI tool that provides intelligent answers to your questions and assists with various tasks.",
+      "tags": ["AI tools", "Chatbot", "Assistant"],
+      "external_links": {
+        "website": "https://brainybot.example.com",
+        "github": "https://github.com/example/brainybot"
+      },
+      "upvote_count": 342
+    },
+    {
+      "name": "DevToolkit",
+      "image": "https://i.ibb.co/7bXVgSQ/desola-lanre-ologun-v-II7q-KAk-9-A-unsplash.jpg",
+      "description": "A comprehensive software suite for developers that includes code editors, debuggers, and collaboration tools.",
+      "tags": ["Softwares", "Development", "Tools"],
+      "external_links": {
+        "website": "https://devtoolkit.example.com",
+        "github": "https://github.com/example/devtoolkit"
+      },
+      "upvote_count": 198
+    },
+    {
+      "name": "GalaxyQuest",
+      "image": "https://i.ibb.co/QXSx6hK/glenn-carstens-peters-0woy-PEJQ7jc-unsplash.jpg",
+      "description": "A space adventure game that lets you explore distant galaxies, complete missions, and battle enemies.",
+      "tags": ["Games", "Adventure", "Space"],
+      "external_links": {
+        "website": "https://galaxyquest.example.com",
+        "github": "https://github.com/example/galaxyquest"
+      },
+      "upvote_count": 475
+    },
+    {
+      "name": "HealthTracker",
+      "image": "https://i.ibb.co/37jssBW/andres-urena-V7-Uo-MNWs-Ysg-unsplash.jpg",
+      "description": "A mobile app that monitors your health metrics and provides personalized health tips and reminders.",
+      "tags": ["Mobile Apps", "Health", "Wellness"],
+      "external_links": {
+        "website": "https://healthtracker.example.com",
+        "github": "https://github.com/example/healthtracker"
+      },
+      "upvote_count": 523
+    },
+    {
+      "name": "FinanceGuru",
+      "image": "https://i.ibb.co/nQB8Kbp/ibrahim-rifath-OAp-Hds2y-EGQ-unsplash.jpg",
+      "description": "An AI-powered software that helps you manage your finances, invest wisely, and save money.",
+      "tags": ["AI tools", "Finance", "Investment"],
+      "external_links": {
+        "website": "https://financeguru.example.com",
+        "github": "https://github.com/example/financeguru"
+      },
+      "upvote_count": 311
+    }
+  ]
+
+  
+  
