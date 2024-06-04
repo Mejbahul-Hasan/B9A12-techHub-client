@@ -49,4 +49,45 @@
   }
 ]
 
+// Review Data
+
+[
+  {
+    "product_id": "665e91b4e7d2b2d8f00e0f9b",
+    "reviewer_name": "John Doe",
+    "reviewer_image": "https://example.com/images/john_doe.jpg",
+    "review_description": "Great web app! Very user-friendly and intuitive. Highly recommend it.",
+    "rating": 5
+  },
+  {
+    "product_id": "665e91b4e7d2b2d8f00e0f9b",
+    "reviewer_name": "Jane Smith",
+    "reviewer_image": "https://example.com/images/jane_smith.jpg",
+    "review_description": "The app is good but can be a bit slow at times. Needs some performance improvements.",
+    "rating": 3
+  },
+  {
+    "product_id": "665e91b4e7d2b2d8f00e0f9b",
+    "reviewer_name": "Michael Brown",
+    "reviewer_image": "https://example.com/images/michael_brown.jpg",
+    "review_description": "Amazing features and excellent support. I use it daily and it has made my work so much easier.",
+    "rating": 4
+  },
+  {
+    "product_id": "665e91b4e7d2b2d8f00e0f9b",
+    "reviewer_name": "Emily Davis",
+    "reviewer_image": "https://example.com/images/emily_davis.jpg",
+    "review_description": "Not satisfied with the app. It crashes frequently and lacks some important features.",
+    "rating": 2
+  },
+  {
+    "product_id": "665e91b4e7d2b2d8f00e0f9b",
+    "reviewer_name": "David Wilson",
+    "reviewer_image": "https://example.com/images/david_wilson.jpg",
+    "review_description": "Decent app with a nice interface. However, the customer service needs improvement.",
+    "rating": 3
+  }
+]
+
+
   

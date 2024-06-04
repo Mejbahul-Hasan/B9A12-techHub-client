@@ -1,6 +1,7 @@
 import useFeaturedProducts from "../hooks/useFeaturedProducts";
 import { GiVote } from "react-icons/gi";
 import { BiUpvote } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 
 const FeaturedProducts = () => {
@@ -17,9 +18,9 @@ const FeaturedProducts = () => {
                         <div className="card-body">
                             <h2 className="card-title">Product Name: {product.name}</h2>
                             <p>Tags: {product.tags}</p>
-                            <div className="card-actions">
-                                <button className="btn btn-outline w-full"><GiVote />{product.upvote_count}<BiUpvote /></button>
-                            </div>
+                            <Link to={`/product-details/${product._id}`} className="card-actions">
+                                    <button className="btn btn-outline border-orange-500 w-full"><GiVote />{product.upvote_count}<BiUpvote /></button>
+                            </Link>
                         </div>
                     </div>
                 ))

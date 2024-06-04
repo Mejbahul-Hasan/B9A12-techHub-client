@@ -4,6 +4,7 @@ import Root from "../Layout/Root";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
+import ProductDetails from "../pages/ProductDetails";
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register />,
+            },
+            {
+                path: '/product-details/:id',
+                element: <ProductDetails />,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/product-details/${params.id}`),
             },
         ]
     },

@@ -1,6 +1,7 @@
 import { GiVote } from "react-icons/gi";
 import { BiUpvote } from "react-icons/bi";
 import useTrendingProducts from "../hooks/useTrendingProducts";
+import { Link } from "react-router-dom";
 
 
 const TrendingProducts = () => {
@@ -18,16 +19,16 @@ const TrendingProducts = () => {
                             <div className="card-body">
                                 <h2 className="card-title">Product Name: {product.name}</h2>
                                 <p>Tags: {product.tags}</p>
-                                <div className="card-actions">
-                                    <button className="btn btn-outline w-full"><GiVote />{product.upvote_count}<BiUpvote /></button>
-                                </div>
+                                <Link to={`/product-details/${product._id}`} className="card-actions">
+                                    <button className="btn btn-outline border-orange-500 w-full"><GiVote />{product.upvote_count}<BiUpvote /></button>
+                                </Link>
                             </div>
                         </div>
                     ))
                 }
             </div>
             <div className="text-center my-7">
-                <button className="btn btn-outline w-1/2">Show All Products</button>
+                <button className="btn btn-outline border-orange-500 w-1/2">Show All Products</button>
             </div>
         </>
     );
