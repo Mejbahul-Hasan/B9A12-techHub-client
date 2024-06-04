@@ -1,21 +1,24 @@
-import useProducts from "../hooks/useProducts";
+import useFeaturedProducts from "../hooks/useFeaturedProducts";
+import { GiVote } from "react-icons/gi";
+import { BiUpvote } from "react-icons/bi";
+
 
 const FeaturedProducts = () => {
-    const [products] = useProducts();
+    const [products] = useFeaturedProducts();
 
     return (
-        <div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {
                 products.map(product => (
-                    <div key={product._id} className="card w-96 bg-base-100 shadow-xl">
+                    <div key={product._id} className="card w-96 bg-base-200 shadow-xl">
                         <figure className="px-10 pt-10">
-                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
+                            <img src={product.image} alt="" className="rounded-xl" />
                         </figure>
-                        <div className="card-body items-center text-center">
-                            <h2 className="card-title">Shoes!</h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div className="card-body">
+                            <h2 className="card-title">Product Name: {product.name}</h2>
+                            <p>Tags: {product.tags}</p>
                             <div className="card-actions">
-                                <button className="btn btn-primary">Buy Now</button>
+                                <button className="btn btn-outline w-full"><GiVote />{product.upvote_count}<BiUpvote /></button>
                             </div>
                         </div>
                     </div>
