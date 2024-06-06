@@ -28,7 +28,9 @@ const TrendingProducts = () => {
                 }
             </div>
             <div className="text-center my-7">
-                <button className="btn btn-outline border-orange-500 w-1/2">Show All Products</button>
+                <Link to="/product-page">
+                    <button className="btn btn-outline border-orange-500 w-1/2">Show All Products</button>
+                </Link>
             </div>
         </>
     );
