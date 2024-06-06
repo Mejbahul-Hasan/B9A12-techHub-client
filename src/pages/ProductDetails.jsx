@@ -15,7 +15,7 @@ const ProductDetails = () => {
             <SectionTitle heading={'Review Section'} />
             <Testimonials/>
             <SectionTitle heading={'Post Review Section'} />
-            <PostReview/>
+            <PostReview productDetails={productDetails}/>
         </>
     );
 };
