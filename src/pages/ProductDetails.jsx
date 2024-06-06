@@ -1,7 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import SectionTitle from "../components/SectionTitle";
 import DetailsSection from "../components/DetailsSection";
-import ReviewSection from "../components/ReviewSection";
+import Testimonials from "../components/Testimonials";
+import PostReview from "../components/PostReview";
 
 const ProductDetails = () => {
 
@@ -12,8 +13,9 @@ const ProductDetails = () => {
             <SectionTitle heading={'Product Details Section'} />
             <DetailsSection productDetails={productDetails} />
             <SectionTitle heading={'Review Section'} />
-            <ReviewSection/>
-            <SectionTitle heading={'New Review Section'} />
+            <Testimonials/>
+            <SectionTitle heading={'Post Review Section'} />
+            <PostReview/>
         </>
     );
 };
