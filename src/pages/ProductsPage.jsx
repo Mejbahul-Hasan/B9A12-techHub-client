@@ -32,7 +32,7 @@ const ProductsPage = () => {
             <form onSubmit={handleSearch}>
                 <label className="input input-bordered flex items-center gap-2 w-96 my-5 mx-auto ">
                     <input type="text" name="search" className="grow" placeholder="Search by 'Tags'" />
-                    <input type="submit" value="Search" className="btn btn-sm btn-outline" />
+                    <input type="submit" value="Search" className="btn btn-sm btn-outline border-orange-500" />
                 </label>
             </form>
 
