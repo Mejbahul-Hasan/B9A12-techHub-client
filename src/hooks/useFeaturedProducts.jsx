@@ -1,28 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useFeaturedProducts = () => {
+    const axiosSecure = useAxiosSecure();
 
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const { refetch, data: products = [], isLoading } = useQuery({
+        queryKey: ['feature-product'],
+        queryFn: async () => {
+            const {data} = await axiosSecure.get('/feature-product')
+            return data;
+        },
+    })
 
-    // const {data, isLoading} = useQuery({
-    //     queryKey: ['products'],
-    //     queryFn: async ()=>{
-    //         const {data} = await
-    //     }
-    // })
+    return [products, refetch, isLoading];
 
-    useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/products-feature`)
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-                setLoading(false);
-            });
-    }, [])
-
-    return [products, loading];
 };
 
 export default useFeaturedProducts;

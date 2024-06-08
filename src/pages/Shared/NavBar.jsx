@@ -80,7 +80,7 @@ const Navbar = () => {
                                     <h1>User Name: {user?.displayName || "User name not found"}</h1>
                                 </li>
                                 <li>
-                                    <Link to="/my-volunteer-post">Dashboard</Link>
+                                    <Link to="/dashboard">Dashboard</Link>
                                 </li>
                                 <li>
                                     <button onClick={handleSignOut} className="btn-ghost btn-sm rounded-md">Log Out</button>
