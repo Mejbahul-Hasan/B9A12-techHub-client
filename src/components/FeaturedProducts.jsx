@@ -13,10 +13,10 @@ const FeaturedProducts = () => {
                 products.map(product => (
                     <div key={product._id} className="card w-96 bg-base-200 shadow-xl">
                         <figure className="px-10 pt-10">
-                            <img src={product.image} alt="" className="rounded-xl" />
+                            <img src={product.product_image} alt="" className="rounded-xl" />
                         </figure>
                         <div className="card-body">
-                            <h2 className="card-title">Product Name: {product.name}</h2>
+                            <h2 className="card-title">Product Name: {product.product_name}</h2>
                             <p>Tags: {product.tags}</p>
                             <Link to={`/product-details/${product._id}`} className="card-actions">
                                     <button className="btn btn-outline border-orange-500 w-full"><GiVote />{product.upvote_count}<BiUpvote /></button>

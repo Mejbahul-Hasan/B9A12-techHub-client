@@ -4,18 +4,18 @@ import { FaLink } from "react-icons/fa";
 
 const DetailsSection = ({ productDetails }) => {
     
-    const { name, image, description, tags, external_links, upvote_count } = productDetails || {};
+    const { product_name, product_image, description, tags, external_links, upvote_count } = productDetails || {};
 
     return (
         <div className="lg:flex">
             <div className="w-full h-64 lg:w-1/2 lg:h-auto">
-                <div className="w-full h-full bg-cover" style={{ backgroundImage: `url(${image})` }}>
+                <div className="w-full h-full bg-cover" style={{ backgroundImage: `url(${product_image})` }}>
                     <div className="w-full h-full bg-black opacity-25"></div>
                 </div>
             </div>
             <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
                 <div className="max-w-xl">
-                    <h2 className="text-3xl font-semibold text-blue-600 dark:text-blue-400 lg:text-4xl">{name}</h2>
+                    <h2 className="text-3xl font-semibold text-blue-600 dark:text-blue-400 lg:text-4xl">{product_name}</h2>
                     <p className="mt-4 font-bold text-gray-500 dark:text-gray-400 lg:text-base">Tag: {tags}</p>
                     <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">Description: {description}</p><br />
                     <div className="flex items-center">
