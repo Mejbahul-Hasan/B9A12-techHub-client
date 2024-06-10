@@ -3,11 +3,29 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
+
+    const { mutateAsync } = useMutation({
+        mutationFn: async productData => {
+            const { data } = await axiosSecure.post(`/add-product`, productData)
+            return data
+        },
+        onSuccess: () => {
+            console.log('Data Saved Successfully')
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your product added successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            })
+            navigate('/dashboard/my-products')
+        },
+    })
 
     const handleFormSubmission = async e => {
         e.preventDefault()
@@ -23,27 +41,38 @@ const AddProduct = () => {
             image: user?.photoURL,
             email: user?.email,
         }
-        const productData = {product_name, product_image, description, tags, external_links, upvote_count, product_owner}
+        const productData = { product_name, product_image, description, tags, external_links, upvote_count, product_owner }
+        // console.table(productData)
         form.reset();
-        // console.log(productData);
 
         try {
-            const { data } = await axiosSecure.post(`/add-product`, productData)
-            console.log(data)
-            if (data.insertedId) {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Your product added successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                })
-            }
-            navigate('/dashboard/my-products')
+            //   Post request to server
+            await mutateAsync(productData)
         } catch (err) {
             console.log(err)
             console.log("Hi, i am error", err.message)
         }
     }
+
+
+
+    // try {
+    //     const { data } = await axiosSecure.post(`/add-product`, productData)
+    //     console.log(data)
+    //     if (data.insertedId) {
+    //         Swal.fire({
+    //             title: 'Success!',
+    //             text: 'Your product added successfully',
+    //             icon: 'success',
+    //             confirmButtonText: 'Cool'
+    //         })
+    //     }
+    //     navigate('/dashboard/my-products')
+    // } catch (err) {
+    //     console.log(err)
+    //     console.log("Hi, i am error", err.message)
+    // }
+    // }
 
     return (
         <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-600">
