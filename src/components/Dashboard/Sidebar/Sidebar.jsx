@@ -1,16 +1,17 @@
 import { useContext, useState } from 'react'
 import { GrLogout, GrTechnology } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
-import { BsFillHouseAddFill } from 'react-icons/bs'
-import { MdHomeWork } from 'react-icons/md'
 import { AiOutlineBars } from 'react-icons/ai'
-import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../provider/AuthProvider'
+import AdminMenu from './Menu/AdminMenu'
+import ModeratorMenu from './Menu/ModeratorMenu'
+import UserMenu from './Menu/UserMenu'
+import useRole from '../../../hooks/useRole'
 
 const Sidebar = () => {
     const { logOut } = useContext(AuthContext);
     const [isActive, setActive] = useState(false)
+    const [role, isLoading] = useRole()
 
     // Sidebar Responsive Handler
     const handleToggle = () => {
@@ -60,43 +61,10 @@ const Sidebar = () => {
 
                         {/*  Menu Items */}
                         <nav>
-                            {/* My Profile */}
-                            <NavLink
-                                to='/dashboard' end
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <FcSettings className='w-5 h-5' />
-
-                                <span className='mx-4 font-medium'>My Profile</span>
-                            </NavLink>
-
-                            {/* Add Product */}
-                            <NavLink
-                                to='add-product'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <BsFillHouseAddFill className='w-5 h-5' />
-
-                                <span className='mx-4 font-medium'>Add Product</span>
-                            </NavLink>
-                            {/* My Products */}
-                            <NavLink
-                                to='my-products'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <MdHomeWork className='w-5 h-5' />
-
-                                <span className='mx-4 font-medium'>My Products</span>
-                            </NavLink>
+                            {role === 'user' && <UserMenu />}
+                            {role === 'moderator' && <ModeratorMenu />}
+                            {role === 'admin' && <AdminMenu />}
+                            
                         </nav>
                     </div>
                 </div>
@@ -105,14 +73,14 @@ const Sidebar = () => {
                     <hr />
 
                     {/* Logout Button */}
-                    <button
+                    <Link to='/'
                         onClick={logOut}
                         className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
                     >
                         <GrLogout className='w-5 h-5' />
 
                         <span className='mx-4 font-medium'>Logout</span>
-                    </button>
+                    </Link>
                 </div>
             </div>
         </>

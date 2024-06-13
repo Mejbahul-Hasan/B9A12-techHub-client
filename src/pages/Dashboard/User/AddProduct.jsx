@@ -16,7 +16,7 @@ const AddProduct = () => {
             return data
         },
         onSuccess: () => {
-            console.log('Data Saved Successfully')
+            // console.log('Data Saved Successfully')
             Swal.fire({
                 title: 'Success!',
                 text: 'Your product added successfully',

@@ -11,6 +11,11 @@ import Dashboard from "../Layout/Dashboard";
 import MyProfile from "../pages/Dashboard/User/MyProfile";
 import AddProduct from "../pages/Dashboard/User/AddProduct";
 import MyProduct from "../pages/Dashboard/User/MyProduct";
+import ProductReviewQueue from "../pages/Dashboard/Moderator/ProductReviewQueue";
+import ReportedContents from "../pages/Dashboard/Moderator/ReportedContents";
+import Statistics from "../pages/Dashboard/Admin/Statistics";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
 
 export const router = createBrowserRouter([
     {
@@ -46,7 +51,7 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
         children: [
           {
-            index: true,
+            path: 'my-profile',
             element: <MyProfile />,
           },
           {
@@ -56,6 +61,26 @@ export const router = createBrowserRouter([
           {
             path: 'my-products',
             element: <MyProduct />,
+          },
+          {
+            path: 'product-review-queue',
+            element: <ProductReviewQueue />,
+          },
+          {
+            path: 'reported-content',
+            element: <ReportedContents />,
+          },
+          {
+            path: 'statistics',
+            element: <Statistics />,
+          },
+          {
+            path: 'manage-users',
+            element: <ManageUsers />,
+          },
+          {
+            path: 'manage-coupons',
+            element: <ManageCoupons />,
           },
         ],
       },

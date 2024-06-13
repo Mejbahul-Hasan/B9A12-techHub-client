@@ -36,6 +36,8 @@ const PostReview = ({productDetails}) => {
         }
     }
 
+    
+
     return (
         <section className="bg-white dark:bg-gray-700 rounded-lg">
             <div className="container px-6 py-10 mx-auto">
