@@ -1,12 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useContext } from "react";
-import { AuthContext } from "../../../provider/AuthProvider";
 import LoadingSpinner from "../../../components/LoadingSpinner";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
 
 const MyProduct = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth()
     const axiosSecure = useAxiosSecure();
 
     const { refetch, data: products = [], isLoading } = useQuery({

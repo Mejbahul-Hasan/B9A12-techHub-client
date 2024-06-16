@@ -48,39 +48,39 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
           {
             path: 'my-profile',
-            element: <MyProfile />,
+            element: <PrivateRoute><MyProfile /></PrivateRoute>,
           },
           {
             path: 'add-product',
-            element: <AddProduct />,
+            element: <PrivateRoute><AddProduct /></PrivateRoute>,
           },
           {
             path: 'my-products',
-            element: <MyProduct />,
+            element: <PrivateRoute><MyProduct /></PrivateRoute>,
           },
           {
             path: 'product-review-queue',
-            element: <ProductReviewQueue />,
+            element: <PrivateRoute><ProductReviewQueue /></PrivateRoute>,
           },
           {
             path: 'reported-content',
-            element: <ReportedContents />,
+            element: <PrivateRoute><ReportedContents /></PrivateRoute>,
           },
           {
             path: 'statistics',
-            element: <Statistics />,
+            element: <PrivateRoute><Statistics /></PrivateRoute>,
           },
           {
             path: 'manage-users',
-            element: <ManageUsers />,
+            element: <PrivateRoute><ManageUsers /></PrivateRoute>,
           },
           {
             path: 'manage-coupons',
-            element: <ManageCoupons />,
+            element: <PrivateRoute><ManageCoupons /></PrivateRoute>,
           },
         ],
       },

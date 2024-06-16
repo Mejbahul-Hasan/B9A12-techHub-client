@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import useAuth from "../../../hooks/useAuth";
 
 const AddProduct = () => {
-    const { user } = useContext(AuthContext);
+    const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
 
