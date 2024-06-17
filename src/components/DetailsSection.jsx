@@ -1,10 +1,30 @@
 import { GiVote } from "react-icons/gi";
 import { BiUpvote } from "react-icons/bi";
 import { FaLink } from "react-icons/fa";
+import { useMutation } from "@tanstack/react-query";
+import { axiosSecure } from "../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const DetailsSection = ({ productDetails }) => {
-    
-    const { product_name, product_image, description, tags, external_links, upvote_count } = productDetails || {};
+
+    const { _id, product_name, product_image, description, tags, external_links, upvote_count } = productDetails || {};
+
+    const { mutateAsync } = useMutation({
+        mutationFn: async ({ id }) => {
+            const { data } = await axiosSecure.patch(`/reported-product/${id}`)
+            // console.log(data)
+            return data
+        },
+        onSuccess: () => {
+            Swal.fire("Reported for Moderator Action");
+        },
+    })
+
+    // handleStatus
+    const handleReport = async (id) => {
+        console.log(id)
+        await mutateAsync({ id })
+    }
 
     return (
         <div className="lg:flex">
@@ -24,7 +44,7 @@ const DetailsSection = ({ productDetails }) => {
                     </div>
                     <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
                         <button className="btn btn-outline border-orange-500 w-full lg:w-1/2"><GiVote />{upvote_count}<BiUpvote /></button>
-                        <button className="btn btn-outline border-orange-500 w-full lg:w-1/2 lg:ml-5">Report</button>
+                        <button onClick={() => handleReport(_id)} className="btn btn-outline border-orange-500 w-full lg:w-1/2 lg:ml-5">Report</button>
                     </div>
                 </div>
             </div>

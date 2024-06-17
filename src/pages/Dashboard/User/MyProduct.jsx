@@ -103,7 +103,7 @@ const MyProduct = () => {
                                                 <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                     <div className='flex items-center gap-x-2'>
                                                         <p className='px-3 py-1 rounded-full text-blue-500 bg-blue-100/60
-                                     text-xs'> Pending</p>
+                                     text-xs'> {product.status}</p>
                                                     </div>
                                                 </td>
 

@@ -35,12 +35,13 @@ const AddProduct = () => {
         const tags = form.tags.value;
         const external_links = form.tags.value;
         const upvote_count = 0;
+        const status = 'Pending'
         const product_owner = {
             name: user?.displayName,
             image: user?.photoURL,
             email: user?.email,
         }
-        const productData = { product_name, product_image, description, tags, external_links, upvote_count, product_owner }
+        const productData = { product_name, product_image, description, tags, external_links, upvote_count, status, product_owner }
         // console.table(productData)
         form.reset();
 
