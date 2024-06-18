@@ -1,24 +1,27 @@
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useMutation } from "@tanstack/react-query";
-import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
-const AddProduct = () => {
-    const {user} = useAuth();
+const UpdateProduct = () => {
+
+    const { user } = useAuth();
+    const existingProduct = useLoaderData();
+    const {_id, product_name, product_image, description, tags, external_links} = existingProduct || {};
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
-
+    
     const { mutateAsync } = useMutation({
         mutationFn: async productData => {
-            const { data } = await axiosSecure.post(`/add-product`, productData)
+            const { data } = await axiosSecure.put(`/update-product/${_id}`, productData)
             return data
         },
         onSuccess: () => {
             // console.log('Data Saved Successfully')
             Swal.fire({
                 title: 'Success!',
-                text: 'Your product added successfully',
+                text: 'Your product updated successfully',
                 icon: 'success',
                 confirmButtonText: 'Cool'
             })
@@ -26,7 +29,7 @@ const AddProduct = () => {
         },
     })
 
-    const handleFormSubmission = async e => {
+    const handleUpdate = async e => {
         e.preventDefault()
         const form = e.target;
         const product_name = form.product_name.value;
@@ -65,42 +68,42 @@ const AddProduct = () => {
                 </div>
             </div>
 
-            <h2 className="my-7 text-lg font-semibold text-gray-700 capitalize dark:text-white">Please fill-up the following form to add your product</h2>
+            <h2 className="my-7 text-lg font-semibold text-gray-700 capitalize dark:text-white">Please fill-up the following form to update your product</h2>
 
-            <form onSubmit={handleFormSubmission}>
+            <form onSubmit={handleUpdate}>
                 <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
                         <label className="text-gray-700 dark:text-gray-200">Product Name</label>
-                        <input name="product_name" required type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                        <input name="product_name" defaultValue={product_name} required type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                     </div>
 
                     <div>
                         <label className="text-gray-700 dark:text-gray-200">Product Image URL</label>
-                        <input name="product_image" required type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                        <input name="product_image" defaultValue={product_image} required type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                     </div>
 
                     <div>
                         <label className="text-gray-700 dark:text-gray-200">Product Description</label>
-                        <input name="description" required type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                        <input name="description" defaultValue={description} required type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                     </div>
 
                     <div>
                         <label className="text-gray-700 dark:text-gray-200">Tags</label>
-                        <input name="tags" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                        <input name="tags" defaultValue={tags} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                     </div>
 
                     <div>
                         <label className="text-gray-700 dark:text-gray-200">External Links</label>
-                        <input name="external_links" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                        <input name="external_links" defaultValue={external_links} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                     </div>
                 </div>
 
                 <div className="mt-6">
-                    <button className="btn w-full btn-outline border-orange-500 text-white">Submit</button>
+                    <button className="btn w-full btn-outline border-orange-500 text-white">Submit to Update</button>
                 </div>
             </form>
         </section>
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;

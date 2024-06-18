@@ -16,6 +16,7 @@ import ReportedContents from "../pages/Dashboard/Moderator/ReportedContents";
 import Statistics from "../pages/Dashboard/Admin/Statistics";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons";
+import UpdateProduct from "../pages/UpdateProduct";
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +44,11 @@ export const router = createBrowserRouter([
             {
                 path: '/product-page',
                 element: <ProductsPage />,
+            },
+            {
+                path: '/update-product/:id',
+                element: <PrivateRoute><UpdateProduct /></PrivateRoute>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/product-details/${params.id}`),
             },
         ]
     },

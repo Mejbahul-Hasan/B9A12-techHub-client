@@ -16,6 +16,23 @@ const ProductReviewQueue = () => {
         },
     })
 
+    const { mutateAsync: mutateAsyncFunction1 } = useMutation({
+        mutationFn: async ({ id }) => {
+            const { data } = await axiosSecure.patch(`/feature-product/${id}`)
+            console.log(data)
+            return data
+        },
+        onSuccess: () => {
+            Swal.fire("Product was made Featured successfully");
+            refetch()
+        },
+    })
+
+    // handleFeatureProduct
+    const handleFeatureProduct = async (id) => {
+        await mutateAsyncFunction1({ id })
+    }
+
     const { mutateAsync } = useMutation({
         mutationFn: async ({ id, status }) => {
             const { data } = await axiosSecure.patch(`/moderator-product/${id}`, { status })
@@ -34,7 +51,7 @@ const ProductReviewQueue = () => {
         await mutateAsync({ id, status })
     }
 
-    if (isLoading) return <LoadingSpinner/>
+    if (isLoading) return <LoadingSpinner />
 
     return (
         <section className='container px-4 mx-auto pt-12'>
@@ -81,7 +98,9 @@ const ProductReviewQueue = () => {
                                                     <Link to={`/product-details/${product._id}`} className="btn border-orange-500 btn-outline btn-sm">View Details</Link>
                                                 </td>
                                                 <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                    <button className="btn border-orange-500 btn-outline btn-sm">Make Product Featured</button>
+                                                    <button onClick={() =>
+                                                        handleFeatureProduct(product._id)
+                                                    } className="btn border-orange-500 btn-outline btn-sm">Make Product Featured</button>
                                                 </td>
                                                 <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
                                                     {/* Accept Button: Pending */}

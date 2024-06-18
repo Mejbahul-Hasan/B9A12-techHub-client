@@ -7,7 +7,7 @@ const useFeaturedProducts = () => {
     const { refetch, data: products = [], isLoading } = useQuery({
         queryKey: ['feature-product'],
         queryFn: async () => {
-            const {data} = await axiosSecure.get('/feature-product')
+            const {data} = await axiosSecure.get('/feature-product/${product}')
             return data;
         },
     })

@@ -4,11 +4,31 @@ import { FaLink } from "react-icons/fa";
 import { useMutation } from "@tanstack/react-query";
 import { axiosSecure } from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../hooks/useAuth";
 
 const DetailsSection = ({ productDetails }) => {
 
-    const { _id, product_name, product_image, description, tags, external_links, upvote_count } = productDetails || {};
+    const { _id, product_name, product_image, description, tags, external_links, upvote_count, product_owner } = productDetails || {};
+    const { user } = useAuth();
 
+    // handle Vote Button
+    const { mutateAsync: mutateAsyncFunction1 } = useMutation({
+        mutationFn: async ({ id }) => {
+            const { data } = await axiosSecure.patch(`/product-vote/${id}`)
+            // console.log(data)
+            return data
+        },
+        onSuccess: () => {
+            window.location.reload();
+            Swal.fire("Thank you for your VOTE");
+        },
+    })
+    
+    const handleVote = async (id) => {
+        await mutateAsyncFunction1({ id })
+    }
+    
+    // handleReport Button
     const { mutateAsync } = useMutation({
         mutationFn: async ({ id }) => {
             const { data } = await axiosSecure.patch(`/reported-product/${id}`)
@@ -19,10 +39,9 @@ const DetailsSection = ({ productDetails }) => {
             Swal.fire("Reported for Moderator Action");
         },
     })
-
-    // handleStatus
+    
     const handleReport = async (id) => {
-        console.log(id)
+        // console.log(id)
         await mutateAsync({ id })
     }
 
@@ -43,7 +62,7 @@ const DetailsSection = ({ productDetails }) => {
                         <p className="mx-3">{external_links}</p>
                     </div>
                     <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
-                        <button className="btn btn-outline border-orange-500 w-full lg:w-1/2"><GiVote />{upvote_count}<BiUpvote /></button>
+                        <button onClick={() => handleVote(_id)} disabled={user?.email === product_owner?.email} className="btn btn-outline border-orange-500 w-full lg:w-1/2"><GiVote />{upvote_count}<BiUpvote /></button>
                         <button onClick={() => handleReport(_id)} className="btn btn-outline border-orange-500 w-full lg:w-1/2 lg:ml-5">Report</button>
                     </div>
                 </div>

@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 
 
 const ProductsPage = () => {
+    
+    
     const [products] = useFeaturedProducts();
     const [items, setItems] = useState(products);
     const [search, setSearch] = useState('');
