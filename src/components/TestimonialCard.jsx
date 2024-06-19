@@ -1,6 +1,7 @@
 import { FcRating } from "react-icons/fc";
 
 const TestimonialCard = ({ review }) => {
+    
     return (
         <div >
             <div className="p-6 bg-gray-100 rounded-lg dark:bg-gray-600 md:p-8">

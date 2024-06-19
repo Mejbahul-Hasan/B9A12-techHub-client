@@ -13,7 +13,7 @@ const ProductDetails = () => {
             <SectionTitle heading={'Product Details Section'} />
             <DetailsSection productDetails={productDetails} />
             <SectionTitle heading={'Review Section'} />
-            <Testimonials/>
+            <Testimonials productDetails={productDetails}/>
             <SectionTitle heading={'Post Review Section'} />
             <PostReview productDetails={productDetails}/>
         </>
