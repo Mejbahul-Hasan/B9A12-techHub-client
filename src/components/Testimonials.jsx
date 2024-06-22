@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import TestimonialCard from "./TestimonialCard";
 
 const Testimonials = ({ productDetails }) => {
-    const [ _id ] = productDetails() || [];
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
